@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <h1>Lorem Ipsum</h1>
+    <p id="p1">Lorem ipsum</p>
+    <p class="pc">Lorem ipsum</p>
+
+
+
+    <button id="botao-efeito">Clique Aqui</button>
+
+    <div style="color: red; background-color: blue ">
+        Lorem Ipsum
+    </div>
+
+
+    <button id="recupera-texto"> recupera-texto </button>
+    <button id="recupera-html">recupera html</button>
+    <button id="recupera-valor"> Recupera Valor </button>
+
+    <button id="define-texto">Definir texto</button>
+    <button id="define-html">Definir Html</button>
+    <button id="define-valor">Definir valor</button>
+
+
+    <div id="recuperacao">
+        Lorem ipsum <strong> dolor </strong> sit amet.
+    </div>
+
+    <input type ="text" id="campo-texto">
+
+    <script
+			  src="https://code.jquery.com/jquery-3.7.1.min.js"
+			  integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo="
+			  crossorigin="anonymous"></script>
+    
+    <script>
+        $(document).ready(function(){
+            $('#define-texto').click(function(){
+                $('#recuperacao').text('Texto <i>sem</i> formatação');
+            });
+            $('#define-html').click(function(){
+                $('#recuperacao').html('Texto <strong> formatados </strong>');
+            });
+            $('#define-valor').click(function(){
+                $('#campo-texto').val('UFPR Jandaia do sul');
+            });
+
+
+
+            $('#recupera-texto').click(function(){
+                let texto = $('#recuperacao').text();
+                alert(texto)
+                console.log(texto)
+            });
+
+            $('#recupera-html').click(function(){
+                let html = $('#recuperacao').html()
+                alert(html);
+                console.log(html);
+            })
+            $('#recupera-valor').click(function(){
+                let valor = $('#campo-texto').val();
+                alert(valor);
+                console.log(valor);
+            })
+
+            $('#botao-efeito').click(function(){
+                $('div').animate({
+                    left: '250px',
+                    opacity: '0.5',
+                    width: '150px',
+                    fontSize: '20pt'
+                }, 'slow');
+            })
+
+            $('h1').css({'color':'red'});
+
+            $('#p1').click(function(){
+                console.log('cliquei no #p1')
+                $(this).hide(1000);
+            });
+            $('.pc').on('click',function(){
+                console.log('cliquei no .pc');
+                $('#p1').show(1000);
+            
+            });
+
+
+        });
+    </script>
+
+</body>
+</html>
