@@ -1,0 +1,12 @@
+#menu{
+    float: left;
+    color: white;
+    background-color: black;
+    width: 80%;
+}
+#opçoes{
+    float: left;
+    color: white;
+    background-color: black;
+    width: 20%;
+}
