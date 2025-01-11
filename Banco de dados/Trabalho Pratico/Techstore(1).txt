@@ -1,0 +1,109 @@
+Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script Script 
+
+Create Table Produto(
+  Produto_id int primary key,
+  Nome varchar(30),
+  Descricao varchar(100),
+  Preco float,
+  Categoria varchar(30)
+  );
+
+Create Table Clientes (
+  Cliente_id int primary key,
+  Nome varchar(30),
+  Endereco varchar(100),
+  Email varchar(100),
+  Telefone varchar(30)
+
+);
+
+Create Table Pedido (
+  id_pedido int primary key,
+  fk_Produto_id int ,
+  foreign key (fk_Produto_id) references Produto(Produto_id),
+  fk_Cliente_id int ,
+  foreign key (fk_Cliente_id) references clientes(Cliente_id),
+  DataPedido varchar(30),
+  Quantidade int
+);
+
+
+Create Table Estoque (
+  Estoque_id int primary key,
+  Quantidade int,
+  Localizacao_Estq varchar(100),
+  Validade varchar(30)
+);
+
+Create Table ProdutoEstoque (
+fk_Produto_id int,
+foreign key (fk_Produto_id) references Produto(Produto_id),
+fk_Estoque_id int,
+foreign key (fk_Estoque_id) references Estoque(Estoque_id)
+);
+
+
+
+INSERT INTO clientes (Cliente_id, Nome, Endereco, Email, Telefone)
+VALUES 
+(1, 'Joao', 'Rua domingos', 'Jao@gmail.com', '2342'),
+(2, 'Cleber', 'Rua Pascoal ', 'Cleber@gmail.com', '5464'),
+(3, 'Lucas', 'Rua Giacomo', 'Lucas@gmail.com', '2342'),
+(4, 'Ana', 'Rua Segantini', 'Ana@gmail.com', '123')
+;
+
+
+INSERT INTO Produto (Produto_id, Nome, Descricao, Preco, Categoria)
+VALUES 
+(1, 'SmartTv', 'Televisão 50 polegadas', 1899.99, 'Televisão'),
+(2, 'Teclado', 'Teclado mecanico ', 259.00, 'Perifericos'),
+(3, 'Mouse', 'Mouse sem fio', 149.99, 'Perifericos'),
+(4, 'Celular', 'Celular com carregamento turbo', 2000.00 , 'Smartphone'),
+(5, 'Placa de Video', 'Tecnologia Ray trancing', 2599.99, 'Placas')
+;
+
+INSERT INTO pedido (id_pedido, fk_Produto_id, fk_Cliente_id, DataPedido, Quantidade)
+VALUES 
+(1, 3, 3, '06/02/0022', 1),
+(2, 2, 3, '06/02/0022', 2),
+(3, 5, 4, '30/06/0022', 1),
+(4, 1, 1, '06/12/0022', 1)
+;
+
+
+INSERT INTO estoque (Estoque_id, Quantidade, Localizacao_Estq, Validade)
+VALUES 
+(1, 50, 'Jandaia do sul', '0'),
+(2, 100, 'Apucarana',  '0'),
+(3, 240, 'Sao paulo', '0'),
+(4, 50, 'Espirito Santo','0' )
+;
+
+INSERT INTO produtoestoque (fk_Produto_id, fk_Estoque_id)
+VALUES 
+(1,2),
+(2,3),
+(3,4),
+(4,1)
+;
+
+CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS CONSULTAS 
+
+Select * from estoque;
+Select * from Clientes;
+Select * from Produto;
+Select * from Pedido;
+Select * from produtoestoque;
+
+
+Select Nome from Clientes;
+
+Select Nome,Cliente_id from Clientes;
+
+Select fk_Cliente_id,fk_Produto_id From Pedido;
+
+Select fk_Cliente_id,fk_Produto_id From Pedido Where fk_Cliente_id = 1;
+
+
+
+

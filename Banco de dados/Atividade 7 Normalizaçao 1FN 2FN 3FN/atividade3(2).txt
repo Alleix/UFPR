@@ -1,0 +1,72 @@
+// Use DBML to define your database structure
+// Docs: https://dbml.dbdiagram.io/docs
+
+Table livros {
+  titulo varchar [primary key]
+  autor varchar
+  assuntos list
+  paginas integer
+  editora varchar
+  generos list
+  custo_original float
+  valor_de_venda float
+  lucro float
+  }
+
+Table autor{
+ autor_id integer [primary key]
+ NomeAutor varchar
+ nacionalidade_autor varchar
+}
+
+Table editora{
+ editora_id integer [primary key]
+ nomeEditora varchar
+pais_editora varchar
+}
+
+Table funcionarios {
+  id_funcionario integer [primary key]
+  nome varchar
+  cargo varchar
+}
+
+Table cargo {
+  cargo_id integer [primary key]
+  carga_horaria_cargo integer
+  salario_cargo interger
+}
+
+Table cliente{
+ cliente_id integer
+ nomeCliente varchar
+ enderecoCliente varchar
+}
+
+Table pedidos {
+  id_pedido integer [primary key]
+  id_livro integer [primary key]
+  nome_cliente varchar
+  quantidade integer
+}
+
+Table livraria {
+  nome varchar [primary key]
+  funcionarios_id integer
+  livros_id integer
+  pedidos_id integer
+}
+
+Ref: livraria.funcionarios_id > funcionarios.id_funcionario // many-to-one
+
+Ref: livros.autor > autor.autor_id
+
+Ref: funcionarios.cargo > cargo.cargo_id
+
+Ref: pedidos.nome_cliente > cliente.cliente_id
+
+Ref: livraria.livros_id > livros.titulo
+
+Ref: livraria.pedidos_id > pedidos.id_pedido
+
+Ref: pedidos.id_pedido > livros.titulo
